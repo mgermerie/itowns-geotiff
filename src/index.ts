@@ -2,6 +2,7 @@ import * as itowns from 'itowns';
 import WMSCapabilities from 'wms-capabilities';
 import Fetcher from './Fetcher';
 import GeotiffParser from './GeotiffParser';
+import WMSSourcePicker from './widgets/WMSSourcePicker/WMSSourcePicker';
 
 
 // SIS data
@@ -38,6 +39,7 @@ const viewerDiv = document.getElementById('view-container');
 const view = new itowns.GlobeView(viewerDiv, placement);
 
 
+
 // ---------- DISPLAY A MAP ON THE VIEW : ----------
 
 function addMap() {
@@ -50,23 +52,78 @@ function addMap() {
 }
 
 
+
 // ---------- DISPLAY TIFF : ----------
 
-function addGeotiff() {
-	const tifSource = new itowns.WMSSource({
-		...data.source,
-		crs: 'EPSG:4326',
-		fetcher: Fetcher.geotiff,
-		parser: GeotiffParser.parse,
-		format: 'image/geotiff',  // TODO: this should not be needed. iTowns needs fixing...
-	});
+const wmsURL = 'http://localhost:8080/geoserver/toto/wms';
+const layerName = 'W002N13_4EGTFLT32_MTNE1_001';
 
-	const tifLayer = new itowns.ColorLayer('tiff', {
-		source: tifSource,
-	});
-	view.addLayer(tifLayer);
-}
+// async function readCapabilities(baseUrl: string) {
+// 	const xmlString = await itowns.Fetcher.text(`${baseUrl}?REQUEST=GetCapabilities`);
+//
+// 	const parsedCapabilities = new WMSCapabilities(
+// 		xmlString,
+// 		window.DOMParser,
+// 	).toJSON();
+// 	return parsedCapabilities;
+// }
+//
+// function readLayerCapabilities(capabilities, layerName) {
+// 	return capabilities.Capability.Layer.Layer.find(layer => layer.Name === layerName);
+// }
+//
+// async function foo() {
+// 	const capabilities = await readCapabilities(wmsURL);
+// 	console.log('capabilities : ', capabilities);
+//
+// 	const layer = readLayerCapabilities(capabilities, layerName);
+// 	console.log('layer : ', layer);
+//
+// 	const crs = layer.CRS.find(crs => ["EPSG:4326", "EPSG:4978"].includes(crs));
+// 	console.log('crs : ', crs);
+// 	if (!crs) {
+// 		// do error
+// 	}
+//
+// 	const layerBbox = layer.BoundingBox.find(bbox => ["EPSG:4326", "EPSG:4978"].includes(bbox.crs));
+// 	console.log('bbox : ', layerBbox);
+//
+// 	const extent = new itowns.Extent(
+// 		layerBbox.crs,
+// 		layerBbox.extent[1], layerBbox.extent[3], layerBbox.extent[0], layerBbox.extent[2],
+// 	);
+// 	const source = {
+// 		crs,
+// 		extent,
+// 		name: layer.Name,
+// 		url: wmsURL,
+// 		version: capabilities.version,
+// 	};
+// 	console.log('source : ', source);
+//
+// 	addWMSGeotiff(source)
+// }
+//
+// function addGeotiff(source) {
+// 	console.log(source);
+// 	const tifSource = new itowns.WMSSource({
+// 		...source,
+// 		fetcher: Fetcher.geotiff,
+// 		parser: GeotiffParser.parse,
+// 		format: 'image/geotiff',  // TODO: this should not be needed. iTowns needs fixing...
+// 	});
+//
+// 	const tifLayer = new itowns.ColorLayer('tiff', {
+// 		source: tifSource,
+// 	});
+// 	view.addLayer(tifLayer);
+// }
 
+
+// foo();
 // addMap();
-addGeotiff();
+
+
+const toto = new WMSSourcePicker();
+toto.addToDOM(viewerDiv);
 

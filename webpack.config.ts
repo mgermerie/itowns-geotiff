@@ -19,6 +19,22 @@ const config = (env) => {
 					test: /src.*\.ts(x)?$/,
 					use: 'ts-loader',
 				},
+				{
+					test: /src.*\.html$/i,
+					use: 'html-loader',
+				},
+				{
+					test: /src.*\.css$/i,
+					use: [
+						{
+							loader: 'style-loader',
+							options: { injectType: 'linkTag' },
+						},
+						{
+							loader: 'file-loader',
+						},
+					],
+				},
 			],
 		},
 
