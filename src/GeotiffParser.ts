@@ -63,6 +63,7 @@ async function parse(data: GeoTIFF, options: ParserOptions) {
 		RedFormat,
 		dataType,
 	);
+	texture.extent = options.extent;
 
 	// console.log(image.fileDirectory);
 	// console.log(image.getSampleFormat(), image.getBitsPerSample());
@@ -82,7 +83,6 @@ async function parse(data: GeoTIFF, options: ParserOptions) {
 
 	texture.flipY = true;
 	texture.needsUpdate = true;
-	texture.extent = options.extent;
 
 	return Promise.resolve(texture);
 }
