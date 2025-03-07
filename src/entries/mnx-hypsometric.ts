@@ -6,8 +6,8 @@ import GeotiffParser from '../GeotiffParser';
 // ---------- CREATE THE VIEW: ----------
 
 const placement = {
-	coord: new itowns.Coordinates('EPSG:4326', -1.08, 13.082),
-	range: 20000,
+	coord: new itowns.Coordinates('EPSG:4326', 2.5, 42.5),
+	range: 250000,
 };
 const viewContainer = document.getElementById('view-container');
 const view = new itowns.GlobeView(viewContainer, placement);
@@ -29,10 +29,12 @@ function addMap() {
 
 const elevationSource = new itowns.WMSSource({
 	crs: 'EPSG:4326',
-	extent: new itowns.Extent('EPSG:4326', 1.999145833332242, 3.0008541666655755, 41.99914583333381, 43.000854166667146),
+	extent: new itowns.Extent('EPSG:4326', 1.999145, 3.000855, 41.999145, 43.000855),
 	name: 'SIS-test:E002N42_6EGTFLT32_MTSA1_001',
-	url: 'http://localhost:8080/geoserver/sis-test/wms',
+	url: 'http://localhost:8080/geoserver/SIS-test/wms',
 	version: '1.3.0',
+
+	transparent: true,
 
 	fetcher: Fetcher.geotiff,
 	parser: GeotiffParser.parse,
@@ -41,7 +43,11 @@ const elevationSource = new itowns.WMSSource({
 
 const elevationLayer = new itowns.ColorLayer(
 	'elevation',
-	{ source: elevationSource },
+	{
+		source: elevationSource,
+		// effect_type: 1,
+		// TODO: try shader chunk to hide no data pixels
+	},
 );
 
 view.addLayer(elevationLayer);
