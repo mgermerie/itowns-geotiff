@@ -56,14 +56,27 @@ async function parse(data: GeoTIFF, options: ParserOptions) {
 		samples: [0],
 	}))[0];
 
+	const testArray = [];
+	for (let i = 0; i < width * height; i++) {
+		testArray.push(Math.random() * 2000);
+	}
+
 	const texture = <TextureWithExtent> new DataTexture(
-		rgbBuffer,
+		// rgbBuffer,
+		Float32Array.from(testArray),
 		width,
 		height,
 		RedFormat,
-		dataType,
+		// dataType,
+		FloatType,
 	);
 	texture.extent = options.extent;
+
+	texture.flipY = true;
+	texture.needsUpdate = true;
+	texture.internalFormat = 'R32F';  // TODO: is it needed?
+
+
 
 	// console.log(image.fileDirectory);
 	// console.log(image.getSampleFormat(), image.getBitsPerSample());
@@ -78,11 +91,10 @@ async function parse(data: GeoTIFF, options: ParserOptions) {
 	// console.log('format : ', image.getSampleFormat());
 	// console.log('bitsPerSample : ', image.getBitsPerSample());
 	// console.log('buffer : ', rgbBuffer);
-	// console.log('texture : ', texture);
-	// console.log('');
 
-	texture.flipY = true;
-	texture.needsUpdate = true;
+	// console.log('buffer : ', testArray);
+	console.log('texture : ', texture);
+	// console.log('');
 
 	return Promise.resolve(texture);
 }
