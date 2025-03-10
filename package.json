@@ -13,7 +13,7 @@
 	"dependencies": {
 		"buffer": "^6.0.3",
 		"geotiff": "../geotiff.js",
-		"itowns": "../itowns",
+		"itowns": "^2.45.0",
 		"three": "^0.170.0",
 		"wms-capabilities": "^0.6.0"
 	},
