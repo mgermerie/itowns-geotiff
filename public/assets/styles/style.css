@@ -7,3 +7,33 @@ html, body {
     height: 100vh;
 }
 
+.source-widget {
+	background-color: #313336bb;
+	border: 1px solid #222222;
+	padding: 8px 16px;
+	width: 500px;
+
+	left: 20px;
+	position: absolute;
+	top: 20px;
+
+	color: white;
+}
+
+.source-widget form {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.source-widget form label {
+	flex-basis: 100%;
+}
+
+#source-url {
+	flex-grow: 1;
+}
+
+.hidden {
+	display: none;
+}

@@ -14,6 +14,7 @@ const config = (env) => {
 		entry: {
 			'mnx-hypsometric': './src/entries/mnx-hypsometric.ts',
 			'ortho-mnx': './src/entries/ortho-mnx.ts',
+			'3d-tiles': './src/entries/3d-tiles.ts',
 		},
 
 		module: {
