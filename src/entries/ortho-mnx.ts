@@ -16,6 +16,12 @@ const view = new itowns.GlobeView(viewContainer, placement);
 // ---------- DISPLAY ORTHO IMAGES: ----------
 
 // TODO: DO
+itowns.Fetcher.json('/resources/layers/OPENSM.json').then(function (config) {
+	config.source = new itowns.TMSSource(config.source);
+	const mapLayer = new itowns.ColorLayer('Map', config);
+
+	// view.addLayer(mapLayer);
+});
 
 
 // ---------- DISPLAY MNX: ----------
@@ -32,7 +38,7 @@ const elevationSource = new itowns.WMSSource({
 	format: 'image/geotiff',  // TODO: this should not be needed. iTowns needs fixing...
 });
 
-const elevationLayer = new itowns.ElevationLayer(
+const elevationLayer = new itowns.ColorLayer(
 	'elevation',
 	{ source: elevationSource },
 );

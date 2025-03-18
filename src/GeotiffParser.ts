@@ -58,7 +58,7 @@ async function parse(data: GeoTIFF, options: ParserOptions) {
 
 	const testArray = [];
 	for (let i = 0; i < width * height; i++) {
-		testArray.push(Math.random() * 2000);
+		testArray.push(Math.random() * 200);
 	}
 
 	const texture = <TextureWithExtent> new DataTexture(

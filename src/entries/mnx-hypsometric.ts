@@ -27,26 +27,26 @@ itowns.Fetcher.json('/resources/layers/OPENSM.json').then(function (config) {
 
 // ---------- [TEST] TRY CUSTOM SHADER TO HIDE NO DATA: ----------
 
-itowns.ShaderChunk.customHeaderColorLayer(
-	`
-	vec4 getGrayscaleColor(vec4 baseColor, float noDataValue) {
-		float colorValue = baseColor.x;
-		float alpha = baseColor.a;
-		// bool condition = (colorValue > 1.0);
-		bool condition = (colorValue == noDataValue);
-		if (condition) { alpha = 0.0; }
-
-		vec4 color = vec4(vec3(colorValue), alpha);
-		return color;
-	}
-	`,
-);
-
-itowns.ShaderChunk.customBodyColorLayer(
-	`
-	color = getGrayscaleColor(color, layer.effect_parameter);
-	`,
-);
+// itowns.ShaderChunk.customHeaderColorLayer(
+// 	`
+// 	vec4 getGrayscaleColor(vec4 baseColor, float noDataValue) {
+// 		float colorValue = baseColor.x;
+// 		float alpha = baseColor.a;
+// 		// bool condition = (colorValue > 1.0);
+// 		// bool condition = (colorValue == noDataValue);
+// 		// if (condition) { alpha = 0.0; }
+// 
+// 		vec4 color = vec4(vec3(colorValue), alpha);
+// 		return color;
+// 	}
+// 	`,
+// );
+// 
+// itowns.ShaderChunk.customBodyColorLayer(
+// 	`
+// 	color = getGrayscaleColor(color, layer.effect_parameter);
+// 	`,
+// );
 
 
 // ---------- DISPLAY MNX IN A ColorLayer: ----------
@@ -68,9 +68,9 @@ const elevationLayer = new itowns.ColorLayer(
 	{
 		source: elevationSource,
 		// TODO: try shader chunk to hide no data pixels
-		effect_type: itowns.colorLayerEffects.customEffect,
-		effect_parameter: 1.0,  // TODO: try replacing this by noDataValue
-		convert: TextureConverter.convert,
+		// effect_type: itowns.colorLayerEffects.customEffect,
+		// effect_parameter: 1.0,  // TODO: try replacing this by noDataValue
+		// convert: TextureConverter.convert,
 	},
 );
 
