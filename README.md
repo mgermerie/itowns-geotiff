@@ -65,5 +65,8 @@ This list should be enriched as new examples start being worked on.
 [itowns]: https://github.com/iTowns/itowns
 [geotiff.js]: https://github.com/geotiffjs/geotiff.js
 [3DTilesRendererJS]: https://github.com/NASA-AMMOS/3DTilesRendererJS
-[examples-3DTiles][https://mgermerie.github.io/itowns-geotiff/html/]
+[entries]: src/entries/
+[src]: src/
+[example-3DTiles]: https://mgermerie.github.io/itowns-geotiff/html/3d-tiles.html
+[local-use-instructions]: #how-to-use-the-examples 
 
