@@ -1,0 +1,50 @@
+name: deployment
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch: {}
+
+
+jobs:
+
+  deploy:
+    name: Build and deploy website
+    if: ${{ github.ref == 'ref/heads/master' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+
+      # Use specific Node.js version
+      - uses: actions/checkout@v4
+      - name: Use Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'npm'
+
+      # Checkout to published website branch
+      - name: Checkout to website branch
+        run: |
+          git checkout published
+          git merge master
+
+      # Install packages
+      - name: Install packages
+        run: npm ci
+
+      # Build bundle
+      - name: Build bundle
+        run: npm run build
+
+      # Push to published website branch
+      - name: Push to website branch
+        run: |
+          git add -f public/assets/js/
+          git push
+
