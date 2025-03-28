@@ -14,7 +14,7 @@ const view = new itowns.GlobeView(viewContainer, placement);
 
 // ---------- DISPLAY A MAP: ----------
 
-itowns.Fetcher.json('/resources/layers/OPENSM.json').then(function (config) {
+itowns.Fetcher.json('../resources/layers/OPENSM.json').then(function (config) {
 	config.source = new itowns.TMSSource(config.source);
 	const mapLayer = new itowns.ColorLayer('Map', config);
 	view.addLayer(mapLayer);
@@ -23,7 +23,7 @@ itowns.Fetcher.json('/resources/layers/OPENSM.json').then(function (config) {
 
 // ---------- DISPLAY ELEVATION: ----------
 
-itowns.Fetcher.json('/resources/layers/WORLD_DTM.json').then(
+itowns.Fetcher.json('../resources/layers/WORLD_DTM.json').then(
 	(config) => {
 		config.source = new itowns.WMTSSource(config.source);
 		const elevationLayer = new itowns.ElevationLayer(config.id, config);
