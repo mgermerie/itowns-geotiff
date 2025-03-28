@@ -27,19 +27,7 @@ import {
 } from '3d-tiles-renderer/plugins';
 
 
-type CameraOptions = {
-	fov?: number,
-	near?: number,
-	far?: number,
-	position?: Vector3,
-};
-type ViewerOptions = {
-	cameraOptions?: CameraOptions,
-	displayAxis?: boolean,
-};
-
-
-const DEFAULT_CAMERA: CameraOptions = {
+const DEFAULT_CAMERA = {
 	fov: 30,
 	near: 0.1,
 	far: 100000,
@@ -51,20 +39,19 @@ const DEFAULT_CAMERA: CameraOptions = {
 
 
 class TilesViewer {
-	container: HTMLDivElement;
-	scene: Scene;
-	renderer: WebGLRenderer;
-	camera: PerspectiveCamera;
-	controls: EnvironmentControls;
-
-	tiles: Array<TilesRenderer>;
-	dracoLoader: DRACOLoader;
-	ktxLoader:KTX2Loader;
+	container;
+	scene;
+	renderer;
+	camera;
+	controls;
+	tiles;
+	dracoLoader;
+	ktxLoader;
 
 
 	constructor(
 		container,
-		options: ViewerOptions = {
+		options = {
 			displayAxis: false,
 			cameraOptions: DEFAULT_CAMERA,
 		},
@@ -207,7 +194,7 @@ const view = new TilesViewer(
 view.render();
 
 
-const form = <HTMLFormElement> document.getElementById('source-widget');
+const form = document.getElementById('source-widget');
 form.addEventListener(
 	'submit',
 	(event) => {
