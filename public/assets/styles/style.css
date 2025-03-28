@@ -1,10 +1,10 @@
 html, body {
-    margin: 0;
-    overflow: hidden;
+	margin: 0;
+	overflow: hidden;
 }
 
 .view-container {
-    height: 100vh;
+	height: 100vh;
 }
 
 .source-widget {
@@ -16,6 +16,7 @@ html, body {
 	left: 20px;
 	position: absolute;
 	top: 20px;
+	z-index: 10;
 
 	color: white;
 }

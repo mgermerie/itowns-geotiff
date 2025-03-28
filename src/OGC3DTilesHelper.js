@@ -99,7 +99,7 @@ function zoomToTile(view, tile) {
 
     view.controls.lookAtCoordinate({
         coord: cameraTransform.coord,
-        range: 1.25 * cameraTransform.range, // zoom out a little bit
+        range: cameraTransform.range,
         tilt: 60,
     });
 }
