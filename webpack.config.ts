@@ -12,7 +12,7 @@ const config = (env) => {
 		devtool: 'source-map',
 
 		entry: {
-			'3d-tiles': './src/entries/3d-tiles.ts',
+			'3d-tiles': './src/entries/3d-tiles.js',
 		},
 
 		module: {
