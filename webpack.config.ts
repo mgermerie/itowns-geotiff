@@ -13,6 +13,7 @@ const config = (env) => {
 
 		entry: {
 			'3d-tiles': './src/entries/3d-tiles.js',
+			'3d-tiles-context': './src/entries/3d-tiles-context.js',
 		},
 
 		module: {

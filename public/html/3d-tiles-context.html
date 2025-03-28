@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ITowns - 3D tiles with context</title>
+
+		<meta charset="UTF-8">
+
+		<link rel="stylesheet" href="../assets/styles/style.css">
+	</head>
+	<body>
+		<div class="source-widget">
+			<form id="source-widget">
+				<label for="source-url">
+					Please enter the URL for a 3D Tiles tileset JSON file.
+				</label>
+				<input type="text" name="source-url" id="source-url">
+				<input type="submit" value="load">
+			</form>
+			<div id="source-information" class="hidden">
+				<p id="source-information">
+					Displaying 3D Tiles from :
+				</p>
+				<ul id="source-list">
+				</ul>
+			</div>
+		</div>
+
+		<div id="view-container" class="view-container"></div>
+
+		<script src="../assets/js/3d-tiles-context.js"></script>
+	</body>
+</html>
